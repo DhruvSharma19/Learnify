@@ -95,7 +95,8 @@ export const getSingleCourse = CatchAsyncError(
         const course = await CourseModel.findById(req.params.id).select(
           "-courseData.videoUrl -courseData.suggestion -courseData.questions -courseData.links"
         );
-        await redis.set(courseId, JSON.stringify(course));
+        await redis.set(courseId, JSON.stringify(course), "EX", 604800);
+
         res.status(200).json({
           success: true,
           course,
@@ -425,8 +426,6 @@ export const addReplyToReview = CatchAsyncError(
   }
 );
 
-
-
 // get all courses --- only for admin
 
 export const getCourses = CatchAsyncError(
@@ -439,28 +438,28 @@ export const getCourses = CatchAsyncError(
   }
 );
 
-
 // delete course -- only for admin
 
-export const delteCourse=CatchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
-  try{
-    const {id}=req.params;
-    const course=await CourseModel.findById(id);
+export const delteCourse = CatchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id } = req.params;
+      const course = await CourseModel.findById(id);
 
-    if(!course){
-      return next(new ErrorHandler("Course not found",404));
+      if (!course) {
+        return next(new ErrorHandler("Course not found", 404));
+      }
+
+      await course.deleteOne({ id });
+
+      await redis.del(id);
+
+      res.status(200).json({
+        success: true,
+        message: "Course deleted successfully",
+      });
+    } catch (error: any) {
+      return next(new ErrorHandler(error.message, 400));
     }
-
-    await course.deleteOne({id});
-
-    await redis.del(id);
-
-    res.status(200).json({
-      success:true,
-      message:"Course deleted successfully"
-    })
   }
-  catch(error:any){
-    return next(new ErrorHandler(error.message,400));
-  }
-})
+);
