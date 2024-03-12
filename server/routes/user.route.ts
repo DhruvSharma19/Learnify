@@ -1,6 +1,8 @@
 import express from "express";
 import {
   activateUser,
+  deleteUser,
+  getAllUsers,
   getUserInfo,
   loginUser,
   logoutUser,
@@ -10,6 +12,7 @@ import {
   updatePassword,
   updateProfilePicture,
   updateUserInfo,
+  updateUserRole,
 } from "../controllers/user.controller";
 import { authorizeRole, isAuthenticated } from "../middleware/auth";
 import { addAnswer, addQuestion } from "../controllers/course.controller";
@@ -27,5 +30,23 @@ userRouter.put("/update-user-password", isAuthenticated, updatePassword);
 userRouter.put("/update-user-avatar", isAuthenticated, updateProfilePicture);
 userRouter.put("/add-question", isAuthenticated, addQuestion);
 userRouter.put("/add-anser", isAuthenticated, addAnswer);
+userRouter.get(
+  "/get-users",
+  isAuthenticated,
+  authorizeRole("admin"),
+  getAllUsers
+);
+userRouter.put(
+  "/update-user",
+  isAuthenticated,
+  authorizeRole("admin"),
+  updateUserRole
+);
+userRouter.delete(
+  "/delete-user/:id",
+  isAuthenticated,
+  authorizeRole("admin"),
+  deleteUser
+);
 
 export default userRouter;

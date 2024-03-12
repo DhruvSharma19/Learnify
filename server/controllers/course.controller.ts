@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { CatchAsyncError } from "../middleware/catchAsyncErrors";
 import cloudinary from "cloudinary";
 import ErrorHandler from "../utils/ErrorHanlder";
-import { createCourse } from "../services/course.service";
+import { createCourse, getAllCoursesService } from "../services/course.service";
 import CourseModel from "../models/course.model";
 import { redis } from "../utils/redis";
 import { stringify } from "querystring";
@@ -424,3 +424,43 @@ export const addReplyToReview = CatchAsyncError(
     }
   }
 );
+
+
+
+// get all courses --- only for admin
+
+export const getCourses = CatchAsyncError(
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      getAllCoursesService(res);
+    } catch (error: any) {
+      return next(new ErrorHandler(error.message, 400));
+    }
+  }
+);
+
+
+// delete course -- only for admin
+
+export const delteCourse=CatchAsyncError(async(req:Request,res:Response,next:NextFunction)=>{
+  try{
+    const {id}=req.params;
+    const course=await CourseModel.findById(id);
+
+    if(!course){
+      return next(new ErrorHandler("Course not found",404));
+    }
+
+    await course.deleteOne({id});
+
+    await redis.del(id);
+
+    res.status(200).json({
+      success:true,
+      message:"Course deleted successfully"
+    })
+  }
+  catch(error:any){
+    return next(new ErrorHandler(error.message,400));
+  }
+})
