@@ -24,12 +24,12 @@ userRouter.post("/login", loginUser);
 userRouter.get("/logout-user", isAuthenticated, logoutUser);
 userRouter.get("/refresh", updateAccessToken);
 userRouter.get("/me", isAuthenticated, getUserInfo);
-userRouter.post("/socailAuth", socialAuth);
+userRouter.post("/socialAuth", socialAuth);
 userRouter.put("/update-user-info", isAuthenticated, updateUserInfo);
 userRouter.put("/update-user-password", isAuthenticated, updatePassword);
 userRouter.put("/update-user-avatar", isAuthenticated, updateProfilePicture);
 userRouter.put("/add-question", isAuthenticated, addQuestion);
-userRouter.put("/add-anser", isAuthenticated, addAnswer);
+userRouter.put("/add-answer", isAuthenticated, addAnswer);
 userRouter.get(
   "/get-users",
   isAuthenticated,
