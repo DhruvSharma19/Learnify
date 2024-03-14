@@ -52,7 +52,7 @@ interface ICourse extends Document {
 const reviewSchema = new Schema<IReview>({
   user: Object,
   rating: {
-    typpe: Number,
+    type: Number,
     default: 0,
   },
   comment: String,

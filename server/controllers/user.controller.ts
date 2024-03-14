@@ -315,7 +315,12 @@ export const updateUserInfo = CatchAsyncError(
       if (name && user) {
         user.name = name;
       }
-      await user?.save();
+      try {
+        await user?.save();
+      } catch (error) {
+        console.log(error);
+        
+      }
 
       await redis.set(userId, JSON.stringify(user));
 
@@ -339,7 +344,7 @@ interface IUpdatePassword {
 export const updatePassword = CatchAsyncError(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { oldPassword, newPassword } = req.body;
+      const { oldPassword, newPassword } = req.body as IUpdatePassword;
 
       if (!oldPassword || !newPassword) {
         return next(new ErrorHandler("Please enter old and new password", 400));
