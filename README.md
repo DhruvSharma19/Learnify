@@ -1,8 +1,8 @@
-# Awesome LMS Project 📘
+# Awesome LMS Project
 
-Welcome to our Learning Management System (LMS) project! This project aims to provide a comprehensive platform for online learning, equipped with a wide range of features to enhance the learning experience for both students and instructors. Whether you're a learner eager to expand your knowledge or an educator looking to share your expertise, our LMS has got you covered! 🚀
+Welcome to our Learning Management System (LMS) project! This project aims to provide a comprehensive platform for online learning, equipped with a wide range of features to enhance the learning experience for both students and instructors. Whether you're a learner eager to expand your knowledge or an educator looking to share your expertise, our LMS has got you covered!
 
-## Features ✨
+## Features 
 
 ### User Management
 - **User Registration:** Sign up and create your account with ease.
@@ -48,7 +48,7 @@ Welcome to our Learning Management System (LMS) project! This project aims to pr
 - **Bug Fixes & Maintenance:** Continuously improve the application with bug fixes and updates.
 - **Cache Maintenance:** Optimize performance with advanced caching mechanisms.
 
-## Getting Started 🚀
+## Getting Started
 
 1. **Clone the repository:**
 ```
@@ -72,11 +72,11 @@ npm start
 5. **Access the application:**
    - Open your web browser and navigate to `http://localhost:3000`.
 
-## Contributing 🤝
+## Contributing
 
 We welcome contributions from the community! Whether it's fixing bugs, adding new features, or improving documentation, every contribution is valuable. Feel free to open issues or pull requests in the repository.
 
-## License 📝
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
