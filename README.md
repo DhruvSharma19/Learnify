@@ -76,12 +76,9 @@ npm start
 
 We welcome contributions from the community! Whether it's fixing bugs, adding new features, or improving documentation, every contribution is valuable. Feel free to open issues or pull requests in the repository.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments 
 
 We would like to express our gratitude to the open-source community for their invaluable contributions and support.
 
-Thank you for choosing our LMS project! Happy learning! 🎓
+Thank you for choosing our LMS project! Happy learning!
