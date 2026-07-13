@@ -1,4 +1,4 @@
-# Awesome LMS Project
+# LMS Project
 
 Welcome to our Learning Management System (LMS) project! This project aims to provide a comprehensive platform for online learning, equipped with a wide range of features to enhance the learning experience for both students and instructors. Whether you're a learner eager to expand your knowledge or an educator looking to share your expertise, our LMS has got you covered!
 
@@ -80,7 +80,7 @@ We welcome contributions from the community! Whether it's fixing bugs, adding ne
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments 🙏
+## Acknowledgments 
 
 We would like to express our gratitude to the open-source community for their invaluable contributions and support.
 
